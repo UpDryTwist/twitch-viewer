@@ -72,7 +72,7 @@ process.on('exit', function () {
 // Start linter
 function processFiles (callback) {
     console.log('Starting HTML linter...')
-    readFiles('mopidy_musicbox_webclient/static', function (filename, content) {
+    readFiles('twitch_viewer/static', function (filename, content) {
         console.log('\n' + filename)
         var result = tidy(content, {'quiet': true})
         if (errors.length > 0) {

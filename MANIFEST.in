@@ -4,7 +4,7 @@ include AUTHORS
 include LICENSE
 include MANIFEST.in
 include README.rst
-include mopidy_musicbox_webclient/ext.conf
+include twitch_viewer/ext.conf
 
-recursive-include mopidy_musicbox_webclient/static *
+recursive-include twitch_viewer/static *
 recursive-include tests *.py

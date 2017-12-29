@@ -12,8 +12,8 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'mopidy_musicbox_webclient/static/vendors/**/*.js',
-            'mopidy_musicbox_webclient/static/js/**/*.js',
+            'twitch_viewer/static/vendors/**/*.js',
+            'twitch_viewer/static/js/**/*.js',
             'tests/**/test_*.js'
         ],
 
@@ -25,7 +25,7 @@ module.exports = function (config) {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             'tests/**/test_*.js': [ 'browserify' ],
-            'mopidy_musicbox_webclient/static/js/**/*.js': ['coverage']
+            'twitch_viewer/static/js/**/*.js': ['coverage']
         },
 
         // test results reporter to use

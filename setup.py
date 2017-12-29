@@ -12,13 +12,13 @@ def get_version(filename):
 
 
 setup(
-    name='Mopidy-MusicBox-Webclient',
-    version=get_version('mopidy_musicbox_webclient/__init__.py'),
-    url='https://github.com/pimusicbox/mopidy-musicbox-webclient',
+    name='Twitch-Viewer',
+    version=get_version('twitch_viewer/__init__.py'),
+    url='https://github.com/UpDryTwist/twitch-viewer',
     license='Apache License, Version 2.0',
-    author='Wouter van Wijk',
-    author_email='woutervanwijk@gmail.com',
-    description='Mopidy MusicBox web extension',
+    author='Greg Tatham',
+    author_email='tathamg@gmail.com',
+    description='Mopidy MusicBox web extension for Now Playing',
     long_description=open('README.rst').read(),
     packages=find_packages(exclude=['tests', 'tests.*']),
     zip_safe=False,
@@ -29,7 +29,7 @@ setup(
     ],
     entry_points={
         'mopidy.ext': [
-            'musicbox_webclient = mopidy_musicbox_webclient:Extension',
+            'twitchview = twitch_viewer:Extension',
         ],
     },
     classifiers=[
