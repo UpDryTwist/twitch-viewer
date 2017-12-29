@@ -172,12 +172,6 @@ function scrollToTracklist () {
     }, 250)
 }
 
-function scrollToCurrentSong () {
-    var divtop = $('.currenttrack').offset().top() - 120
-    $('#currenttable'.animate({
-        scrollTop: divtop
-    }, 250))
-}
 
 function isMobileAll () {
     // Checks for known mobile and tablet devices - see http://stackoverflow.com/questions/11381673/detecting-a-mobile-browser

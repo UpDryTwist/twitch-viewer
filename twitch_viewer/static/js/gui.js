@@ -597,12 +597,16 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
             if (this.id === getjQueryID(target, uri) && eachTlid === tlid) {
                 if (!$(this).hasClass('currenttrack')) {
                     $(this).addClass('currenttrack')
+
+                    var divtop = $(this).offset().top() - 120
+                    $(this.animate({
+                        scrollTop: divtop
+                    }, 250))
                 }
             } else if ($(this).hasClass('currenttrack')) {
                 $(this).removeClass('currenttrack')
             }
         })
-        scrollToCurrentSong()
     }
 
     var popupElement
