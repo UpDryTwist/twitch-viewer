@@ -6,7 +6,7 @@ chai.use(require('chai-jquery'))
 
 var sinon = require('sinon')
 
-var library = require('../../mopidy_musicbox_webclient/static/js/library.js')
+var library = require('../../twitch_viewer/static/js/library.js')
 
 describe('Library', function () {
     var selectID = '#selectSearchService'

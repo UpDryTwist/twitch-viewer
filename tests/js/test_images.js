@@ -6,7 +6,7 @@ chai.use(require('chai-jquery'))
 
 var sinon = require('sinon')
 
-var images = require('../../mopidy_musicbox_webclient/static/js/images.js')
+var images = require('../../twitch_viewer/static/js/images.js')
 
 describe('images', function () {
     var mopidy

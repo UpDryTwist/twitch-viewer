@@ -2,7 +2,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import logging
 
-from mopidy_musicbox_webclient import Extension
+from twitch_viewer import Extension
 
 logger = logging.getLogger(__name__)
 

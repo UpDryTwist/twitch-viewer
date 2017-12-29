@@ -6,7 +6,7 @@ chai.use(require('chai-jquery'))
 
 var sinon = require('sinon')
 
-var configureJQueryMobile = require('../../mopidy_musicbox_webclient/static/js/custom_scripting.js')
+var configureJQueryMobile = require('../../twitch_viewer/static/js/custom_scripting.js')
 
 describe('jQuery Defaults', function () {
     it('should disable ajax and hashListening', function () {

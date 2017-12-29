@@ -9,8 +9,8 @@ __version__ = '2.4.0'
 
 class Extension(ext.Extension):
 
-    dist_name = 'Mopidy-MusicBox-Webclient'
-    ext_name = 'musicbox_webclient'
+    dist_name = 'Twitch-viewer'
+    ext_name = 'twitch_viewer'
     version = __version__
 
     def get_default_config(self):

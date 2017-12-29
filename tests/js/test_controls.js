@@ -6,7 +6,7 @@ chai.use(require('chai-jquery'))
 
 var sinon = require('sinon')
 
-var controls = require('../../mopidy_musicbox_webclient/static/js/controls.js')
+var controls = require('../../twitch_viewer/static/js/controls.js')
 var DummyTracklist = require('./dummy_tracklist.js')
 
 describe('controls', function () {

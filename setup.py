@@ -29,7 +29,7 @@ setup(
     ],
     entry_points={
         'mopidy.ext': [
-            'twitchview = twitch_viewer:Extension',
+            'twitch_viewer = twitch_viewer:Extension',
         ],
     },
     classifiers=[

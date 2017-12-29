@@ -8,15 +8,15 @@ import tornado.testing
 import tornado.web
 import tornado.websocket
 
-from mopidy_musicbox_webclient import Extension
-from mopidy_musicbox_webclient.web import StaticHandler
+from twitch_viewer import Extension
+from twitch_viewer.web import StaticHandler
 
 
 class BaseTest(tornado.testing.AsyncHTTPTestCase):
 
     def get_app(self):
         extension = Extension()
-        self.config = config.Proxy({'musicbox_webclient': {
+        self.config = config.Proxy({'twitch_viewer': {
             'enabled': True,
             'musicbox': True,
             'websocket_host': '',
@@ -74,7 +74,7 @@ class IndexHandlerTestMopidy(BaseTest):
 
     def get_app(self):
         extension = Extension()
-        self.config = config.Proxy({'musicbox_webclient': {
+        self.config = config.Proxy({'twitch_viewer': {
             'enabled': True,
             'musicbox': False,
             'websocket_host': '',

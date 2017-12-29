@@ -4,7 +4,7 @@ import unittest
 
 import mock
 
-from mopidy_musicbox_webclient import Extension
+from twitch_viewer import Extension
 
 
 class ExtensionTests(unittest.TestCase):
@@ -14,7 +14,7 @@ class ExtensionTests(unittest.TestCase):
 
         config = ext.get_default_config()
 
-        assert '[musicbox_webclient]' in config
+        assert '[twitch_viewer]' in config
         assert 'enabled = true' in config
         assert 'websocket_host =' in config
         assert 'websocket_port =' in config

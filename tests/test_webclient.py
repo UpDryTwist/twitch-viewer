@@ -6,8 +6,8 @@ import mock
 
 import mopidy.config as mopidy_config
 
-from mopidy_musicbox_webclient import Extension
-from mopidy_musicbox_webclient.webclient import Webclient
+from twitch_viewer import Extension
+from twitch_viewer.webclient import Webclient
 
 
 class WebclientTests(unittest.TestCase):
@@ -15,7 +15,7 @@ class WebclientTests(unittest.TestCase):
     def setUp(self):
         config = mopidy_config.Proxy(
             {
-                'musicbox_webclient': {
+                'twitch_viewer': {
                     'enabled': True,
                     'musicbox': False,
                     'websocket_host': 'host_mock',
@@ -38,7 +38,7 @@ class WebclientTests(unittest.TestCase):
     def test_get_websocket_url_uses_request_host(self):
         config = mopidy_config.Proxy(
             {
-                'musicbox_webclient': {
+                'twitch_viewer': {
                     'enabled': True,
                     'musicbox': False,
                     'websocket_host': '',
@@ -59,7 +59,7 @@ class WebclientTests(unittest.TestCase):
                 'http': {
                     'port': 999
                 },
-                'musicbox_webclient': {
+                'twitch_viewer': {
                     'enabled': True,
                     'musicbox': False,
                     'websocket_host': '127.0.0.1',

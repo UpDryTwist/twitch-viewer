@@ -6,7 +6,7 @@ chai.use(require('chai-jquery'))
 
 var sinon = require('sinon')
 
-var SyncedProgressTimer = require('../../mopidy_musicbox_webclient/static/js/synced_timer.js')
+var SyncedProgressTimer = require('../../twitch_viewer/static/js/synced_timer.js')
 
 describe('SyncedTimer', function () {
     var MAX_ATTEMPTS = 8
