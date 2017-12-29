@@ -447,7 +447,7 @@ $(document).ready(function (event) {
 
     window.onhashchange = locationHashChanged
     if (location.hash.length < 2) {
-        switchContent('home')
+        switchContent('nowPlaying')
     }
     $(window).hashchange()
 
@@ -602,6 +602,7 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
                 $(this).removeClass('currenttrack')
             }
         })
+        scrollToCurrentSong()
     }
 
     var popupElement

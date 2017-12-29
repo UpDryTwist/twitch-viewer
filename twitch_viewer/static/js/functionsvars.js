@@ -172,6 +172,13 @@ function scrollToTracklist () {
     }, 250)
 }
 
+function scrollToCurrentSong () {
+    var divtop = $('.currenttrack').offset().top() - 120
+    $('#currenttable'.animate({
+        scrollTop: divtop
+    }, 250))
+}
+
 function isMobileAll () {
     // Checks for known mobile and tablet devices - see http://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
     var regexpMobile = /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i
@@ -256,7 +263,7 @@ function renderSongLi (previousTrack, track, nextTrack, uri, tlid, target, curre
     }
 
     html += '<li class="song albumli" id="' + getjQueryID(target, track.uri) + '" tlid="' + tlid + '">'
-    if (isPlayable(track)) {
+    if (false && isPlayable(track)) { // GCT:  Disabled play button
         // Show popup icon for audio files or 'tracks' of other scheme types
         html += '<a href="#" class="moreBtn" onclick="return popupTracks(event, \'' + uri + '\',\'' + track.uri + tlidParameter + '\');">' +
         '<i class="fa fa-play-circle-o"></i></a>'

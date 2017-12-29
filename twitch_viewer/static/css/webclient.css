@@ -423,10 +423,17 @@ span.hostInfo {
 /************
  *  Popups  *
  ************/
-#modalalbum a, #modalartist a, #modalname a {
+#modalalbum a {
+    color: blue;
+    text-decoration: none;
+    font-style: italic;
+}
+
+#modalartist a, #modalname a {
     color: #444;
     text-decoration: none;
 }
+
 
 #modalinfo {
     position: relative;
