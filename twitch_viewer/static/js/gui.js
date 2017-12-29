@@ -372,6 +372,9 @@ function locationHashChanged () {
     var divid = hash[0].substr(1)
     var uri = hash[1]
 
+    // GCT, 12.29.2017: Force to nowPlaying!
+    divid = 'nowPlaying'
+
     headline = setHeadline(divid)
     updateDocumentTitle(headline)
 
