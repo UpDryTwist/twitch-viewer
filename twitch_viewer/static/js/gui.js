@@ -617,6 +617,12 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
             if (uri) {
                 if (this.id === getjQueryID(target, uri)) {
                     $(this).addClass('currenttrack2')
+
+                    var divtop = $(this).offset().top() - 120
+                    $(this.animate({
+                        scrollTop: divtop
+                    }, 250))
+
                 } else {
                     $(this).removeClass('currenttrack2')
                 }
