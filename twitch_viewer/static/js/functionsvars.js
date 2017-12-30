@@ -172,6 +172,14 @@ function scrollToTracklist () {
     }, 250)
 }
 
+function scrollToId (anId) {
+    var divtop = $(anId).offset().top - 120
+    $('body,html').animate({
+        scrollTop: divtop
+    }, 250)
+
+}
+
 
 function isMobileAll () {
     // Checks for known mobile and tablet devices - see http://stackoverflow.com/questions/11381673/detecting-a-mobile-browser

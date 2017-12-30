@@ -597,11 +597,7 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
             if (this.id === getjQueryID(target, uri) && eachTlid === tlid) {
                 if (!$(this).hasClass('currenttrack')) {
                     $(this).addClass('currenttrack')
-
-                    var divtop = $(this).offset().top() - 120
-                    $(this.animate({
-                        scrollTop: divtop
-                    }, 250))
+                    scrollToId(this.id)
                 }
             } else if ($(this).hasClass('currenttrack')) {
                 $(this).removeClass('currenttrack')
@@ -618,10 +614,7 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
                 if (this.id === getjQueryID(target, uri)) {
                     $(this).addClass('currenttrack2')
 
-                    var divtop = $(this).offset().top() - 120
-                    $(this.animate({
-                        scrollTop: divtop
-                    }, 250))
+                    scrollToId(this.id)
 
                 } else {
                     $(this).removeClass('currenttrack2')
