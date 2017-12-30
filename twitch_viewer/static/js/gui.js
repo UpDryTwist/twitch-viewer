@@ -597,7 +597,7 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
             if (this.id === getjQueryID(target, uri) && eachTlid === tlid) {
                 if (!$(this).hasClass('currenttrack')) {
                     $(this).addClass('currenttrack')
-                    scrollToId(this.id)
+                    scroll2Id(this.id)
                 }
             } else if ($(this).hasClass('currenttrack')) {
                 $(this).removeClass('currenttrack')
@@ -614,7 +614,7 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
                 if (this.id === getjQueryID(target, uri)) {
                     $(this).addClass('currenttrack2')
 
-                    scrollToId(this.id)
+                    scroll2Id(this.id)
 
                 } else {
                     $(this).removeClass('currenttrack2')

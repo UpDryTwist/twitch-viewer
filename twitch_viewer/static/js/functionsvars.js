@@ -177,7 +177,13 @@ function scrollToId (anId) {
     $('body,html').animate({
         scrollTop: divtop
     }, 250)
+}
 
+function scroll2Id ( className ) {
+    var $container = $("html,body");
+    var $scrollTo = $(className);
+
+    $container.animate({scrollTop: $scrollTo.offset().top - $container.offset().top + $container.scrollTop(), scrollLeft: 0},300);
 }
 
 
