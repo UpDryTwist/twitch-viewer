@@ -170,7 +170,8 @@ function scroll2Id (anId) {
     var offset = $("#"+anId).offset()
     console.log("Offset = " + offset)
     var divtop = $(anId).offset().top - 120
-    $('body,html').animate({
+    console.log("Divtop = " + divtop)
+    $('#currenttable').animate({
         scrollTop: divtop
     }, 2000)
 }
