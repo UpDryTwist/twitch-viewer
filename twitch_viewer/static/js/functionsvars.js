@@ -136,21 +136,16 @@ var audioExt = [
 ]
 
 function scroll2Id (anId) {
-    console.log('ID2 = ' + anId)
     var offset = $('#' + anId).offset()
-    console.log('Offset = ' + offset)
-    var divtop = offset.top - 120
-    console.log('Divtop = ' + divtop)
+    var divScroll = offset.top - 120
+    console.log('DivScroll = ' + divScroll)
+    var currOffset = $('#queue-list').scrollTop()
+    console.log('Curr Scroll Top = ' + currOffset)
+    var finalTop = divScroll + scrollTop
+    console.log('Final Scroll = ' + finalTop)
     $('#queue-list').animate({
-        scrollTop: divtop
+        scrollTop: finalTop
     }, 2000)
-}
-
-function scrollxxId (className) {
-    var $container = $('html,body')
-    var $scrollTo = $(className)
-
-    $container.animate({scrollTop: $scrollTo.offset().top - $container.offset().top + $container.scrollTop(), scrollLeft: 0}, 300)
 }
 
 /** ******************************************************

@@ -294,6 +294,14 @@
 }
 */
 
+.tv-left-pane {
+    height: 100vh;
+    overflow: hidden;
+    will-change: overflow;
+    float: left;
+    width: 20%;
+}
+
 .tv-page {
     height: 100vh;
 }
