@@ -555,21 +555,20 @@ span.hostInfo {
     margin: 0 !important;
 }
 
-#panel {
-    display: flex;
-    overflow: hidden;
-    height: 100vh;
-    will-change: overflow;
+.full-panel {
+   overflow: hidden;
+   will-change: overflow;
+   height: 100vh;
 }
 
-#currenttable {
+.scrolling-div {
     overflow: auto;
     height: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
 }
 
-#currenttable::-webkit-scrollbar {
+.scrolling-div::-webkit-scrollbar {
     display: none;
 }
 
