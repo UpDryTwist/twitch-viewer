@@ -295,7 +295,7 @@
 */
 
 .tv-left-pane {
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
     will-change: overflow;
     float: left;
@@ -307,8 +307,8 @@
 }
 
 .tv-scroller {
-    overflow: scroll;
-    height: 100vh;
+    overflow: auto;
+    height: 100%;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
 }

@@ -141,7 +141,7 @@ function scroll2Id (anId) {
     console.log('DivScroll = ' + divScroll)
     var currOffset = $('#queue-list').scrollTop()
     console.log('Curr Scroll Top = ' + currOffset)
-    var finalTop = divScroll + scrollTop
+    var finalTop = divScroll + currOffset
     console.log('Final Scroll = ' + finalTop)
     $('#queue-list').animate({
         scrollTop: finalTop
