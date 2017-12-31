@@ -165,7 +165,7 @@ function scrollToTop () {
     }, 250)
 }
 
-function scrollToId (anId) {
+function scroll2Id (anId) {
     console.log("ID = " + anId)
     var offset = $(anId).offset()
     console.log("Offset = " + offset)
@@ -175,7 +175,7 @@ function scrollToId (anId) {
     }, 2000)
 }
 
-function scroll2Id ( className ) {
+function scrollxxId ( className ) {
     var $container = $("html,body");
     var $scrollTo = $(className);
 
