@@ -166,7 +166,7 @@ function scrollToTop () {
 }
 
 function scroll2Id (anId) {
-    console.log("ID = " + anId)
+    console.log("ID2 = " + anId)
     var offset = $("#"+anId).offset()
     console.log("Offset = " + offset)
     var divtop = $(anId).offset().top - 120
