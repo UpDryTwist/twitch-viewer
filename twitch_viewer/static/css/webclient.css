@@ -37,7 +37,7 @@
  *  Pages, content  *
  ********************/
 #page {
-    background-color: #fff;
+    background-color: #000;
 }
 
 #artistviewimage,
@@ -133,33 +133,6 @@
     margin-left: 20px;
 }
 
-.song .moreBtn {
-    float: right;
-    padding: 15px 18px 12px 22px;
-    display: inline-block;
-    line-height: 100%;
-}
-
-.moreBtn i {
-    color: #ddd;
-    font-size: initial;
-}
-
-.infoBtn {
-    top: 0;
-    width: 90%;
-    position: absolute;
-}
-
-.infoBtn i {
-    font-size: 1.33em;
-    color: #ddd;
-    background: white;
-    border-radius: 50%;
-    height: 1em;
-    width: 1em;
-}
-
 .backnav {
     background-color: #ccc !important;
 }
@@ -167,7 +140,6 @@
 .refreshLibraryBtnDiv {
     display: none;
 }
-
 
 /************
  *  Popups  *
@@ -179,41 +151,19 @@
 }
 
 #modalartist a, #modalname a {
-    color: #444;
+    color: #dddddd;
     text-decoration: none;
 }
 
+.artistalbumline {
+    font-size: 150%;
+}
 
 #modalinfo {
     position: relative;
     display: inline-block;
     padding-top: .5em;
 }
-
-.popupArtistLi,
-.popupAlbumLi {
-    display: none
-}
-
-.popupArtistName,
-.popupTrackName,
-.popupAlbumName,
-.popupArtistName {
-    font-style: oblique;
-}
-
-#artistpopup,
-#coverpopup {
-    max-width: 90%;
-    background: white;
-    padding: 5px;
-}
-
-#h_artistname {
-    margin-bottom: 65px;
-    margin-top: 10px;
-}
-
 #albumCoverImg,
 #coverpopupimage,
 #artistpopupimage {
@@ -283,16 +233,6 @@
 /****************
  *  Common use  *
  ****************/
-/*
-.ui-panel.ui-panel-open {
-    position: fixed;
-}
-
-.ui-panel .ui-panel-inner {
-    height: 100%;
-    overflow-y: auto;
-}
-*/
 
 .tv-left-pane {
     height: 100%;
@@ -303,7 +243,7 @@
 }
 
 .tv-page {
-    height: 100vh;
+    height: 100%;
 }
 
 .tv-scroller {
@@ -315,22 +255,6 @@
 .tv-scroller::-webkit-scrollbar {
     display: none;
 }
-/*
-.full-panel {
-   overflow: hidden;
-   will-change: overflow;
-   height: 100vh;
-}
-.scrolling-div {
-    overflow: auto;
-    height: auto;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;
-}
-.scrolling-div::-webkit-scrollbar {
-    display: none;
-}
-*/
 
 a {
     text-decoration: none !important;
@@ -340,12 +264,14 @@ a {
     float: right;
     font-size: 10px;
     margin-top: 12px;
+    color: #e0e0e0;
 }
 
 .pull-left {
     float: left;
     font-size: 10px;
     margin-top: 12px;
+    color: #e0e0e0;
 }
 
 /**********************
@@ -380,20 +306,6 @@ a {
 
 #btplay {
     color: white;
-}
-
-.songinfo {
-    height: 100%;
-    width: 90%;
-    float: left;
-}
-
-.songinfo-text {
-    text-align: left;
-    line-height: 22px;
-    color: white;
-    overflow: hidden;
-    padding: 3px;
 }
 
 #nowPlayingpane {

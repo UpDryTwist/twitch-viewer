@@ -137,15 +137,12 @@ var audioExt = [
 
 function scroll2Id (anId) {
     var offset = $('#' + anId).offset()
-    var divScroll = offset.top - 120
-    console.log('DivScroll = ' + divScroll)
+    var divScroll = offset.top - 200
     var currOffset = $('#queue-list').scrollTop()
-    console.log('Curr Scroll Top = ' + currOffset)
     var finalTop = divScroll + currOffset
-    console.log('Final Scroll = ' + finalTop)
     $('#queue-list').animate({
         scrollTop: finalTop
-    }, 2000)
+    }, 3000)
 }
 
 /** ******************************************************

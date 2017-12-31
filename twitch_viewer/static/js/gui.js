@@ -26,7 +26,7 @@ function resizeMb () {
 
 function setSongTitle (track, refresh_ui) {
     songdata.track.name = track.name
-    $('#modalname').html('<a href="#" onclick="return controls.showInfoPopup(\'' + track.uri + '\', \'\', mopidy);">' + track.name + '</span></a>')
+    $('#modalname').html('<a href="#">' + track.name + '</span></a>')
     if (refresh_ui) {
         resizeMb()
     }
@@ -88,13 +88,6 @@ function setSongInfo (data) {
         $('#modalalbum').html('')
     }
     images.setAlbumImage(data.track.uri, '#infocover, #albumCoverImg', mopidy)
-    if (data.track.uri) {
-        // Add 'Show Info' icon to album image
-        $('#modalinfo').append(
-            '<a href="#" class="infoBtn" onclick="return controls.showInfoPopup(\'' + data.track.uri + '\', \'undefined\', mopidy);">' +
-            '<i class="fa fa-info-circle"></i></a>')
-    }
-
     $('#modalartist').html(arttmp)
 
     $('#trackslider').attr('min', 0)
