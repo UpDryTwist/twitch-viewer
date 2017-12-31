@@ -116,10 +116,6 @@ function initSocketevents () {
         showOffline(false)
         library.getCurrentPlaylist()
         updateStatusOfAll()
-        library.getPlaylists()
-        controls.getUriSchemes().then(function () {
-            controls.showFavourites()
-        })
         showLoading(false)
         $(window).hashchange()
     })

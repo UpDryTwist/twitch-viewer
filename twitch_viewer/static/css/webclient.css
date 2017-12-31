@@ -123,20 +123,11 @@
     margin-top: 3px;
 }
 
-.currenttrack2 {
-    background-image: url('../images/icons/play_alt_12x12.png');
-    background-repeat: no-repeat;
-    background-position: 4px 51%;
-}
 .currenttrack {
     background-image: url('../images/icons/play_alt_16x16.png');
     background-repeat: no-repeat;
     background-color: #eee;
     background-position: 4px 50%;
-}
-
-.currenttrack2 a {
-    margin-left: 15px;
 }
 .currenttrack a {
     margin-left: 20px;
@@ -352,9 +343,6 @@ a {
 /**********************
  *  Song information  *
  **********************/
-.ui-footer {
-    border: 0px;
-}
 
 #infoname {
     overflow: hidden;

@@ -27,8 +27,6 @@ var artiststext = ''
 var songname = ''
 var songdata = {'track': {}, 'tlid': -1}
 
-var uriSchemes = {}
-
 // array of cached playlists (not only user-playlists, also search, artist, album-playlists)
 var playlists = {}  // TODO: Refactor into one shared cache
 var currentplaylist

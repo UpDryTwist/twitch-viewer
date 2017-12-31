@@ -144,15 +144,6 @@
                     $('#mutebt').attr('class', 'fa fa-volume-up')
                 }
             }
-        },
-
-        getUriSchemes: function () {
-            uriSchemes = {}
-            return mopidy.getUriSchemes().then(function (schemes) {
-                for (var i = 0; i < schemes.length; i++) {
-                    uriSchemes[schemes[i].toLowerCase()] = true
-                }
-            })
         }
     }
 
