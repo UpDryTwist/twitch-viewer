@@ -219,7 +219,7 @@ function initSocketevents () {
         showOffline(true)
     })
 
-    mopidy.on('event:optionsChanged', updateOptions)
+    // GCT:  mopidy.on('event:optionsChanged', updateOptions)
 
     mopidy.on('event:trackPlaybackStarted', function (data) {
         setSongInfo(data.tl_track)
