@@ -20,19 +20,8 @@ function resetSong () {
 }
 
 function resizeMb () {
-    if ($(window).width() < 880) {
-        $('#panel').panel('close')
-    } else {
-        $('#panel').panel('open')
-    }
-
     $('#infoname').html(songdata.track.name)
     $('#infoartist').html(artiststext)
-
-    if ($(window).width() > 960) {
-        $('#playlisttracksdiv').show()
-        $('#playlistslistdiv').show()
-    }
 }
 
 function setSongTitle (track, refresh_ui) {
@@ -118,15 +107,6 @@ function setSongInfo (data) {
     resizeMb()
 }
 
-/** ****************
- * display popups *
- ******************/
-
-function showAlbumPopup (popupId) {
-    uri = $(popupId).data('track')
-    library.showAlbum(popupData[uri].album.uri, mopidy)
-}
-
 /** ********************
  * initialize sockets *
  **********************/
@@ -140,8 +120,6 @@ function initSocketevents () {
         controls.getUriSchemes().then(function () {
             controls.showFavourites()
         })
-        library.getBrowseDir()
-        library.getSearchSchemes(searchBlacklist, mopidy)
         showLoading(false)
         $(window).hashchange()
     })
@@ -169,8 +147,6 @@ function initSocketevents () {
     })
 
     mopidy.on('event:playlistChanged', function (data) {
-        $('#playlisttracksdiv').hide()
-        $('#playlistslistdiv').show()
         delete playlists[data.playlist.uri]
         library.getPlaylists()
     })
@@ -229,55 +205,6 @@ function initSocketevents () {
  * gui stuff  *
  **************/
 
-function toggleFullscreen () {
-    if (isMobileSafari) { alert('To get this app in Full Screen, you have to add it to your home-screen using the Share button.'); exit() }
-    if (!isFullscreen()) {  // current working methods
-        var docElm = document.documentElement
-        if (docElm.requestFullscreen) {
-            docElm.requestFullscreen()
-        } else if (docElm.msRequestFullscreen) {
-            docElm.msRequestFullscreen()
-        } else if (docElm.mozRequestFullScreen) {
-            docElm.mozRequestFullScreen()
-        } else if (docElm.webkitRequestFullScreen) {
-            docElm.webkitRequestFullScreen()
-        }
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen()
-        } else if (document.msExitFullscreen) {
-            document.msExitFullscreen()
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen()
-        } else if (document.webkitCancelFullScreen) {
-            document.webkitCancelFullScreen()
-        }
-    }
-}
-
-function isFullscreen () {
-    return (document.fullscreenElement ||    // alternative standard method
-        document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) // current working methods
-}
-
-function switchContent (divid, uri) {
-    var hash = divid
-    if (uri) {
-        hash += '?' + uri
-    }
-    location.hash = '#' + hash
-}
-
-function setHeadline (site) {
-    site = site.trim()
-    headline = $('.mainNav').find('a[href$=' + site + ']').text()
-    if (headline === '') {
-        headline = site.charAt(0).toUpperCase() + site.slice(1)
-    }
-    $('#contentHeadline').html('<a href="#home" onclick="switchContent(\'home\'); return false;">' + headline + '</a>')
-    return headline
-}
-
 // update everything as if reloaded
 function updateStatusOfAll () {
     mopidy.playback.getCurrentTlTrack().then(processCurrenttrack, console.error)
@@ -288,69 +215,6 @@ function updateStatusOfAll () {
     mopidy.mixer.getMute().then(processMute, console.error)
 }
 
-function locationHashChanged () {
-    var hash = document.location.hash.split('?')
-    // remove #
-    var divid = hash[0].substr(1)
-    var uri = hash[1]
-
-    // GCT, 12.29.2017: Force to nowPlaying!
-    divid = 'nowPlaying'
-
-    headline = setHeadline(divid)
-    updateDocumentTitle(headline)
-
-    if ($(window).width() < 880) {
-        $('#panel').panel('close')
-    }
-
-    $('.mainNav a').removeClass($.mobile.activeBtnClass)
-    // i don't know why some li elements have those classes, but they do, so we need to remove them
-    $('.mainNav li').removeClass($.mobile.activeBtnClass)
-    $('#nav' + divid + ' a').addClass($.mobile.activeBtnClass)  // Update navigation pane
-
-    $('.pane').hide()  // Hide all pages
-    $('#' + divid + 'pane').show()  // Switch to active pane
-
-    if (divid === 'browse' && browseStack.length > 0) {
-        window.scrollTo(0, browseStack[browseStack.length - 1].scrollPos || 0)  // Restore scroll position - browsing library.
-    } else if (typeof pageScrollPos[divid] !== 'undefined') {  // Restore scroll position - pages
-        window.scrollTo(0, pageScrollPos[divid])
-    }
-
-    switch (divid) {
-        case 'nowPlaying':  // Show 'now playing' footer
-            $('#normalFooter').hide()
-            $('#nowPlayingFooter').show()
-            break
-        case 'search':
-            $('#searchinput').focus()
-            break
-        case 'artists':
-            if (uri !== '') {
-                if (mopidy) {
-                    library.showArtist(uri, mopidy)
-                } else {
-                    showOffline(true)  // Page refreshed - wait for mopidy object to be initialized.
-                }
-            }
-            break
-        case 'albums':
-            if (uri !== '') {
-                if (mopidy) {
-                    library.showAlbum(uri, mopidy)
-                } else {
-                    showOffline(true)  // Page refreshed - wait for mopidy object to be initialized.
-                }
-            }
-            break
-        default:  // Default footer
-            $('#normalFooter').show()
-            $('#nowPlayingFooter').hide()
-    }
-    return false
-}
-
 /** *********************
  * initialize software *
  ***********************/
@@ -358,127 +222,12 @@ $(document).ready(function (event) {
     showOffline(true)
     // check for websockets
     if (!window.WebSocket) {
-        switchContent('playlists')
-        $('#playlistspane').html('<h2>Old Browser</h2><p>Sorry. Your browser isn\'t modern enough for this webapp. Modern versions of Chrome, Firefox, Safari all will do. Maybe Opera and Internet Explorer 10 also work, but it\'s not tested.</p>')
+        $('#nowPlayingpane').html('<h2>Old Browser</h2><p>Sorry. Your browser isn\'t modern enough for this webapp. Modern versions of Chrome, Firefox, Safari all will do. Maybe Opera and Internet Explorer 10 also work, but it\'s not tested.</p>')
         exit
     }
 
-    // workaround for a bug in jQuery Mobile, without that the panel doesn't close on mobile devices...
-    $('.ui-panel-dismiss').on('tap', function () { $('#panel').panel('close') })
-    // end of workaround
-
-    window.onhashchange = locationHashChanged
-    if (location.hash.length < 2) {
-        switchContent('nowPlaying')
-    }
-    $(window).hashchange()
-
-    // Remember scroll position for each page and browsed folder
-    $(window).scrollEnd(function () {
-        var divid = document.location.hash.split('?')[0].substr(1)
-        if (divid === 'browse' && browseStack.length > 0) {
-            browseStack[browseStack.length - 1].scrollPos = window.pageYOffset
-        } else {
-            pageScrollPos[divid] = window.pageYOffset
-        }
-    }, 250)
-
     initgui = false
-
-    // only show backbutton if in UIWebview
-    if (window.navigator.standalone) {
-        $('#btback').show()
-    } else {
-        $('#btback').hide()
-    }
-
-    // navigation temporary, rewrite this!
-    $('#songinfo').click(function () {
-        return switchContent('nowPlaying')
-    })
-    $('#albumCoverImg').click(function () {
-        return switchContent('current')
-    })
-    $('#navToggleFullscreen').click(function () {
-        toggleFullscreen()
-    })
-
-    // event handlers for full screen mode
-    $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange, MSFullscreenChange', function (e) {
-        if (isFullscreen()) {
-            document.getElementById('toggletxt').innerHTML = 'Exit Fullscreen'
-        } else {
-            document.getElementById('toggletxt').innerHTML = 'Fullscreen'
-        }
-    })
-
-    // Remove MusicBox only content (e.g. settings, system pages)
-    if (!$(document.body).data('is-musicbox')) {
-        $('#navSettings').hide()
-        $('#navshutdown').hide()
-        $('#homesettings').hide()
-        $('#homeshutdown').hide()
-    }
-
     // navigation stuff
-
-    $(document).keypress(function (event) {
-	// console.log('kp:    '+event);
-        if (event.target.tagName !== 'INPUT') {
-            var unicode = event.keyCode ? event.keyCode : event.charCode
-            var actualkey = String.fromCharCode(unicode)
-            switch (actualkey) {
-                case ' ':
-                    controls.doPlay()
-                    event.preventDefault()
-                    break
-                case '>':
-                    controls.doNext()
-                    event.preventDefault()
-                    break
-                case '<':
-                    controls.doPrevious()
-                    event.preventDefault()
-                    break
-            }
-            return true
-        }
-    })
-
-    $.event.special.swipe.horizontalDistanceThreshold = 125 // (default: 30px)  Swipe horizontal displacement must be more than this.
-    $.event.special.swipe.verticalDistanceThreshold = 50 // (default: 75px)  Swipe vertical displacement must be less than this.
-    $.event.special.swipe.durationThreshold = 500
-
-    // swipe songinfo and panel
-    $('#normalFooter, #nowPlayingFooter').on('swiperight', controls.doPrevious)
-    $('#normalFooter, #nowPlayingFooter').on('swipeleft', controls.doNext)
-    $('#nowPlayingpane, .ui-body-c, #header, #panel, .pane').on('swiperight', function (event) {
-        if (!$(event.target).is('#normalFooter') && !$(event.target).is('#nowPlayingFooter')) {
-            $('#panel').panel('open')
-            event.stopImmediatePropagation()
-        }
-    })
-    $('#nowPlayingpane, .ui-body-c, #header, #panel, .pane').on('swipeleft', function (event) {
-        if (!$(event.target).is('#normalFooter') && !$(event.target).is('#nowPlayingFooter')) {
-            $('#panel').panel('close')
-            event.stopImmediatePropagation()
-        }
-    })
-
-    $('#trackslider').on('slidestart', function () {
-        syncedProgressTimer.stop()
-        $('#trackslider').on('change', function () { syncedProgressTimer.updatePosition($(this).val()) })
-    })
-
-    $('#trackslider').on('slidestop', function () {
-        $('#trackslider').off('change')
-        syncedProgressTimer.updatePosition($(this).val())
-        controls.doSeekPos($(this).val())
-    })
-
-    $('#volumeslider').on('slidestart', function () { volumeSliding = true })
-    $('#volumeslider').on('slidestop', function () { volumeSliding = false })
-    $('#volumeslider').on('change', function () { controls.doVolume($(this).val()) })
 
     $(window).resize(resizeMb).resize()
 
@@ -501,7 +250,6 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
     if (arguments.length < 3) {
         throw new Error('Missing parameters for "updatePlayIcons" function call.')
     }
-    var listviews = [PLAYLIST_TABLE, SEARCH_TRACK_TABLE, ARTIST_TABLE, ALBUM_TABLE, BROWSE_TABLE]
     var target = CURRENT_PLAYLIST_TABLE.substr(1)
     if (uri && typeof tlid === 'number' && tlid >= 0) {
         $(CURRENT_PLAYLIST_TABLE).children('li.song.albumli').each(function () {
@@ -519,31 +267,4 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
             }
         })
     }
-
-    var popupElement
-
-    for (var i = 0; i < listviews.length; i++) {
-        target = listviews[i].substr(1)
-        $(listviews[i]).children('li.song.albumli').each(function () {
-            if (uri) {
-                if (this.id === getjQueryID(target, uri)) {
-                    $(this).addClass('currenttrack2')
-                } else {
-                    $(this).removeClass('currenttrack2')
-                }
-            }
-            if (popupMenuIcon) {
-                popupElement = $(this).children('a.moreBtn').children('i').first()
-                if (!popupElement.hasClass(popupMenuIcon)) {
-                    popupElement.removeClass()
-                    popupElement.addClass(popupMenuIcon)
-                }
-            }
-        })
-    }
-}
-
-function updateDocumentTitle (headline) {
-    headline = headline || $('#contentHeadline').text()
-    document.title = headline + ' | ' + $(document.body).data('title')
 }

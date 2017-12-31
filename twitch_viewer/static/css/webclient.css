@@ -2,21 +2,6 @@
  * Mopidy Webclient CSS
  * (c) Wouter van Wijk 2012-2017
  */
-/*****************************
- * Side Panel and Navigation *
- *****************************/
-#contentHeadline a {
-    color:white;
-}
-
-/**headers and controls**/
-#headermenubtn {
-    padding-top: 2px;
-}
-
-#headersearchbtn span {
-    font-size: 15px;
-}
 
 /******************
  *  Track Slider  *
@@ -46,34 +31,6 @@
 
 .ui-slider-input {
     display: none !important;
-}
-
-/************************
- *  Volume Slider
- ***********************/
-#mutebt {
-    color: white;
-    float: left;
-    margin-left: 8px;
-    margin-top: 8px;
-}
-
-#volumeslider {
-    display: inline;
-}
-
-div.hostInfo {
-    width: 100%;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-span.hostInfo {
-    font-weight: normal;
-    font-size: 0.75em;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 /********************
@@ -127,46 +84,6 @@ span.hostInfo {
 .table li:last-child {
     border-bottom: 1px solid #CECECE;
 }
-
-.info-table {
-    display: table !important;
-}
-
-.info-table thead {
-    visibility: collapse;
-}
-
-.info-table th {
-    border-bottom: none !important;
-}
-
-.info-table tr {
-    border-bottom: 1px solid #f2f2f2
-}
-
-.info-table td {
-    color: #555 !important;
-    padding: 2px;
-    padding-right: 14px;
-    padding-left: 14px;
-    border: none !important;
-}
-
-.info-table td.label {
-    font-weight: bold;
-}
-
-.info-table td.label-center {
-    vertical-align: middle;
-}
-
-.info-table input {
-    color: #555;
-    border: none;
-    font-size: 1em;
-    width: 100%;
-}
-
 .albumdivider h1, .table li h1 {
     font-size: 120% !important;
 }
@@ -392,14 +309,14 @@ span.hostInfo {
 
 .tv-scroller {
     overflow: scroll;
-    height: auto;
+    height: 100vh;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
 }
 .tv-scroller::-webkit-scrollbar {
     display: none;
 }
-
+/*
 .full-panel {
    overflow: hidden;
    will-change: overflow;
@@ -414,6 +331,7 @@ span.hostInfo {
 .scrolling-div::-webkit-scrollbar {
     display: none;
 }
+*/
 
 a {
     text-decoration: none !important;
@@ -505,7 +423,4 @@ a {
     .ui-responsive-panel.ui-page-panel .ui-panel-content-wrap-open.ui-panel-content-wrap-display-push.ui-panel-content-wrap-position-right,
     .ui-responsive-panel.ui-page-panel .ui-panel-content-wrap-open.ui-panel-content-wrap-display-reveal.ui-panel-content-wrap-position-right {
         margin: 0 0 0 17em;
-    }
-    .ui-responsive-panel .ui-panel-dismiss-display-reveal {
-        display: none;
     }
