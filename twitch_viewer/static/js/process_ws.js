@@ -40,7 +40,7 @@ function processCurrentPlaylist (resultArr) {
     currentplaylist = resultArr
     resultsToTables(currentplaylist, CURRENT_PLAYLIST_TABLE)
     mopidy.playback.getCurrentTlTrack().then(processCurrenttrack, console.error)
-    updatePlayIcons(songdata.track.uri, songdata.tlid, controls.getIconForAction())
+    updatePlayIcons(songdata.track.uri, songdata.tlid)
 }
 
 /** ******************************************************

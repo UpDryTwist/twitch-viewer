@@ -40,7 +40,7 @@ function setSongInfo (data) {
         data.track.name = decodeURI(name[name.length - 1])
     }
 
-    updatePlayIcons(data.track.uri, data.tlid, controls.getIconForAction())
+    updatePlayIcons(data.track.uri, data.tlid)
     artistshtml = ''
     artiststext = ''
 
@@ -241,7 +241,7 @@ $(document).ready(function (event) {
     resetSong()
 })
 
-function updatePlayIcons (uri, tlid, popupMenuIcon) {
+function updatePlayIcons (uri, tlid) {
     // Update styles of listviews
     if (arguments.length < 3) {
         throw new Error('Missing parameters for "updatePlayIcons" function call.')

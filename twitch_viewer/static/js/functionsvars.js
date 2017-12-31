@@ -277,7 +277,7 @@ function resultsToTables (results, target, uri, onClickBack, backIsOptional) {
         }
     }
     $(target).append(html)
-    updatePlayIcons(songdata.track.uri, songdata.tlid, controls.getIconForAction())
+    updatePlayIcons(songdata.track.uri, songdata.tlid)
 }
 
 function getUris (tracks) {
