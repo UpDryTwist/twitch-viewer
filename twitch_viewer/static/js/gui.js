@@ -243,7 +243,7 @@ $(document).ready(function (event) {
 
 function updatePlayIcons (uri, tlid) {
     // Update styles of listviews
-    if (arguments.length < 3) {
+    if (arguments.length < 2) {
         throw new Error('Missing parameters for "updatePlayIcons" function call.')
     }
     var target = CURRENT_PLAYLIST_TABLE.substr(1)
