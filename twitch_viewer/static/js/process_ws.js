@@ -151,6 +151,7 @@ function processBrowseDir (resultArr) {
  * process results of list of playlists of the user
  *********************************************************/
 function processGetPlaylists (resultArr) {
+
     if ((!resultArr) || (resultArr === '')) {
         $('#playlistslist').empty()
         return
@@ -171,8 +172,8 @@ function processGetPlaylists (resultArr) {
     }
     // Prepend the user's Spotify "Starred" playlist and favourites to the results. (like Spotify official client).
     tmp = favourites + starred + tmp
-    $('#playlistslist').html(tmp)
-    // GCT:  scrollToTracklist()
+    $('#playlistslist').html(tmp):""
+
     showLoading(false)
 }
 
