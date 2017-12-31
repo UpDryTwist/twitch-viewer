@@ -176,7 +176,7 @@ function scrollToId (anId) {
     var divtop = $(anId).offset().top - 120
     $('body,html').animate({
         scrollTop: divtop
-    }, 250)
+    }, 2000)
 }
 
 function scroll2Id ( className ) {
@@ -254,7 +254,6 @@ function albumTracksToTable (pl, target, uri) {
 function renderSongLi (previousTrack, track, nextTrack, uri, tlid, target, currentIndex, listLength) {
     var name
     var tlidParameter = ''
-    var onClick = ''
     var html = ''
     track.name = validateTrackName(track, currentIndex)
     // Streams
@@ -263,20 +262,8 @@ function renderSongLi (previousTrack, track, nextTrack, uri, tlid, target, curre
         return html
     }
 
-    if (target === CURRENT_PLAYLIST_TABLE && typeof tlid === 'number' && tlid >= 0) {  // Current queue: Show popup menu icon. onClick plays track.
-        tlidParameter = '\',\'' + tlid
-        onClick = 'return controls.playQueueTrack(' + tlid + ');'
-    } else {  // All other tracklist: Show default action icon. onClick performs default action
-        onClick = 'return controls.playTracks(\'\', mopidy, \'' + track.uri + '\', \'' + uri + '\');'
-    }
-
     html += '<li class="song albumli" id="' + getjQueryID(target, track.uri) + '" tlid="' + tlid + '">'
-    if (false && isPlayable(track)) { // GCT:  Disabled play button
-        // Show popup icon for audio files or 'tracks' of other scheme types
-        html += '<a href="#" class="moreBtn" onclick="return popupTracks(event, \'' + uri + '\',\'' + track.uri + tlidParameter + '\');">' +
-        '<i class="fa fa-play-circle-o"></i></a>'
-    }
-    html += '<a href="#" onclick="' + onClick + '"><h1><i class="' + getMediaClass(track) + '"></i> ' + track.name + '</h1>'
+    html += '<a href="#"><h1><i class="' + getMediaClass(track) + '"></i> ' + track.name + '</h1>'
 
     if (listLength === 1 || (!hasSameAlbum(previousTrack, track) && !hasSameAlbum(track, nextTrack))) {
         html += renderSongLiAlbumInfo(track)

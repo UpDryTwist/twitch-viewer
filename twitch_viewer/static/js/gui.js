@@ -346,21 +346,11 @@ function setHeadline (site) {
     return headline
 }
 
-// update tracklist options.
-function updateOptions () {
-    mopidy.tracklist.getRepeat().then(processRepeat, console.error)
-    mopidy.tracklist.getRandom().then(processRandom, console.error)
-    mopidy.tracklist.getConsume().then(processConsume, console.error)
-    mopidy.tracklist.getSingle().then(processSingle, console.error)
-}
-
 // update everything as if reloaded
 function updateStatusOfAll () {
     mopidy.playback.getCurrentTlTrack().then(processCurrenttrack, console.error)
     mopidy.playback.getTimePosition().then(processCurrentposition, console.error)
     mopidy.playback.getState().then(processPlaystate, console.error)
-
-    updateOptions()
 
     mopidy.playback.getVolume().then(processVolume, console.error)
     mopidy.mixer.getMute().then(processMute, console.error)
@@ -498,13 +488,6 @@ $(document).ready(function (event) {
         $('#homeshutdown').hide()
     }
 
-    // Remove Alarm Clock icons if it is not present
-    if (!$(document.body).data('has-alarmclock')) {
-        $('#navAlarmClock').hide()
-        $('#homeAlarmClock').hide()
-        $('#homeAlarmClock').nextAll().find('.ui-block-a, .ui-block-b').toggleClass('ui-block-a').toggleClass('ui-block-b')
-    }
-
     // navigation stuff
 
     $(document).keypress(function (event) {
@@ -597,7 +580,7 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
             if (this.id === getjQueryID(target, uri) && eachTlid === tlid) {
                 if (!$(this).hasClass('currenttrack')) {
                     $(this).addClass('currenttrack')
-                    // scroll2Id(this.id)
+                    scroll2Id(this.id)
                 }
             } else if ($(this).hasClass('currenttrack')) {
                 $(this).removeClass('currenttrack')
@@ -613,8 +596,6 @@ function updatePlayIcons (uri, tlid, popupMenuIcon) {
             if (uri) {
                 if (this.id === getjQueryID(target, uri)) {
                     $(this).addClass('currenttrack2')
-                    // scroll2Id(this.id)
-
                 } else {
                     $(this).removeClass('currenttrack2')
                 }
