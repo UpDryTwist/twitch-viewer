@@ -144,11 +144,6 @@
 /************
  *  Popups  *
  ************/
-
-#qrCodeImg {
-    float: bottom;
-}
-
 #modalalbum a {
     color: blue;
     text-decoration: none;
@@ -250,13 +245,18 @@
 }
 
 .tv-scroller {
+    float: top;
     overflow: auto;
-    height: 100%;
+    height: 70%;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: none;
 }
 .tv-scroller::-webkit-scrollbar {
     display: none;
+}
+
+#qrCodeImg {
+    float: bottom;
 }
 
 a {
