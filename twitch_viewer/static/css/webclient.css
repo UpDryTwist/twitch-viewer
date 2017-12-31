@@ -192,7 +192,6 @@ span.hostInfo {
     display: none;
 }
 
-#currentpane,
 #searchpane,
 #albumspane,
 #artistspane,
@@ -554,6 +553,24 @@ span.hostInfo {
  ****************/
 #playlistspane {
     margin: 0 !important;
+}
+
+#panel {
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+    will-change: overflow;
+}
+
+#currenttable {
+    overflow: auto;
+    height: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+}
+
+#currenttable::-webkit-scrollbar {
+    display: none;
 }
 
 a {
