@@ -130,23 +130,6 @@ function initSocketevents () {
         controls.setPlayState(true)
     })
 
-    mopidy.on('event:playlistsLoaded', function (data) {
-        showLoading(true)
-        library.getPlaylists()
-    })
-
-    mopidy.on('event:playlistChanged', function (data) {
-        delete playlists[data.playlist.uri]
-        library.getPlaylists()
-    })
-
-    mopidy.on('event:playlistDeleted', function (data) {
-        $('#playlisttracksdiv').hide()
-        $('#playlistslistdiv').show()
-        delete playlists[data.uri]
-        library.getPlaylists()
-    })
-
     mopidy.on('event:volumeChanged', function (data) {
         controls.setVolume(data.volume)
     })
