@@ -270,9 +270,6 @@
         },
 
         showArtist: function (nwuri, mopidy) {
-            $('#popupQueue').popup('close')
-            $('#popupTracks').popup('close')
-            $('#controlsmodal').popup('close')
             $(ARTIST_TABLE).empty()
 
         // TODO cache
@@ -289,9 +286,6 @@
         },
 
         showAlbum: function (uri, mopidy) {
-            $('#popupQueue').popup('close')
-            $('#popupTracks').popup('close')
-            $('#controlsmodal').popup('close')
             $(ALBUM_TABLE).empty()
             // fill from cache
             var pl = getTracksFromUri(uri, true)

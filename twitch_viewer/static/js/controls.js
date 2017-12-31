@@ -42,11 +42,11 @@
         playTracks: function (action, mopidy, trackUri, playlistUri, index) {
             toast('Updating queue...')
 
-            trackUri = trackUri || $('#popupTracks').data('track') || $('#popupQueue').data('track')
+            trackUri = trackUri
             if (typeof trackUri === 'undefined') {
                 throw new Error('No track URI provided for playback.')
             }
-            playlistUri = playlistUri || $('#popupTracks').data('list') || $('#popupQueue').data('list')
+            playlistUri = playlistUri
             if (typeof playlistUri === 'undefined') {
                 throw new Error('No playlist URI provided for playback.')
             }
@@ -100,9 +100,6 @@
                     }
                 }
             }
-
-            $('#popupTracks').popup('close')
-            $('#popupQueue').popup('close')
         },
 
         /* Getter function for 'action' variable. Also checks config settings and cookies if required. */
