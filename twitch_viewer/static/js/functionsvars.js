@@ -171,7 +171,7 @@ function scroll2Id (anId) {
     console.log("Offset = " + offset)
     var divtop = offset.top - 120
     console.log("Divtop = " + divtop)
-    $('#currenttable').animate({
+    $('#queue-list').animate({
         scrollTop: divtop
     }, 2000)
 }

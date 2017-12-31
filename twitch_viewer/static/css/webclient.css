@@ -555,6 +555,15 @@ span.hostInfo {
     margin: 0 !important;
 }
 
+.ui-panel.ui-panel-open {
+    position: fixed;
+}
+
+.ui-panel .ui-panel-inner {
+    height: 100%;
+    /* overflow-y: auto; */
+}
+
 .full-panel {
    overflow: hidden;
    will-change: overflow;
