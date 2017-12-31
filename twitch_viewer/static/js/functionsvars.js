@@ -165,13 +165,6 @@ function scrollToTop () {
     }, 250)
 }
 
-function scrollToTracklist () {
-    var divtop = $('#playlisttracksdiv').offset().top - 120
-    $('body,html').animate({
-        scrollTop: divtop
-    }, 250)
-}
-
 function scrollToId (anId) {
     var divtop = $(anId).offset().top - 120
     $('body,html').animate({
