@@ -1,6 +1,6 @@
 {
   "name": "Twitch-Viewer",
-  "version": "0.1.1",
+  "version": "0.0.3",
   "description": "Mopidy MusicBox web extension for showing Now Playing",
   "main": "gui.js",
   "directories": {
@@ -50,7 +50,4 @@
     "watchify": "^3.7.0"
   },
   "homepage": "https://github.com/UpDryTwist/twitch-viewer#readme",
-  "dependencies": {
-    "spotify-sdk": "^1.0.0-beta2"
-  }
 }
