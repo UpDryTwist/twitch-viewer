@@ -40,13 +40,6 @@
     background-color: #000;
 }
 
-#artistviewimage,
-#albumviewcover {
-    float: right;
-    height: 90px;
-    max-width: 90%;
-}
-
 .ui-block-a-min {
     float: left !important;
     width: initial !important;
@@ -144,6 +137,11 @@
 /************
  *  Popups  *
  ************/
+
+.nowPlaying-artistInfo {
+    font-size: 200%;
+}
+
 #modalalbum a {
     color: blue;
     text-decoration: none;
@@ -166,6 +164,7 @@
 }
 #albumCoverImg {
     display: block;
+    height: 70%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10px;
@@ -258,7 +257,7 @@
 #qrCodeImg {
     float: bottom;
     display: block;
-    margin: 0 auto;
+    margin: 20 auto;
 }
 
 a {

@@ -49,5 +49,8 @@
     "tidy-html5": "latest",
     "watchify": "^3.7.0"
   },
-  "homepage": "https://github.com/UpDryTwist/twitch-viewer#readme"
+  "homepage": "https://github.com/UpDryTwist/twitch-viewer#readme",
+  "dependencies": {
+    "spotify-sdk": "^1.0.0-beta2"
+  }
 }
